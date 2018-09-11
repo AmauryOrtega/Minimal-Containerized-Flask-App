@@ -2,8 +2,16 @@ pipeline {
   agent any
   stages {
     stage('Build') {
+      agent {
+        docker {
+          image 'hello-world'
+        }
+
+      }
       steps {
-        sh 'docker-compose up -d --build'
+        sh '''#docker-compose up -d --build
+echo "desde hello-world"
+uname -a'''
       }
     }
     stage('Status') {
