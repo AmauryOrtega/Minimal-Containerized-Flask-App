@@ -13,9 +13,9 @@ pipeline {
     }
     stage('Status') {
       steps {
-        sh 'docker ps -a',
-        sh 'docker images -a',
-        sh 'docker volume ls',
+        sh 'docker ps -a'
+        sh 'docker images -a'
+        sh 'docker volume ls'
         sh 'docker network ls'
       }
     }
