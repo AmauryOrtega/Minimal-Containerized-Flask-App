@@ -7,17 +7,16 @@ pipeline {
       }
     }
     stage('Build') {
-      agent any
       steps {
         sh 'docker-compose up -d --build'
       }
     }
     stage('Status') {
       steps {
-        sh '''docker ps -a
-docker images -a
-docker volume ls
-docker network ls'''
+        sh 'docker ps -a',
+        sh 'docker images -a',
+        sh 'docker volume ls',
+        sh 'docker network ls'
       }
     }
     stage('Turndown') {
