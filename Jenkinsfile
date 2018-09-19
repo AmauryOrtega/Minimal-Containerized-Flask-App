@@ -1,11 +1,6 @@
 pipeline {
   agent any
   stages {
-    stage('Stop all') {
-      steps {
-        sh 'docker-compose down'
-      }
-    }
     stage('Build') {
       steps {
         sh 'docker-compose up -d --build'
@@ -22,6 +17,7 @@ pipeline {
     stage('Turndown') {
       steps {
         input 'Terminaste con las pruebas?'
+        sh 'docker-compose down'
       }
     }
   }
